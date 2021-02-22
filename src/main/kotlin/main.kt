@@ -23,4 +23,16 @@ fun main() {
     //Prints a failure message: the element can't be added because it duplicates an existing element.
 
     println(aboutSet.getIssuesSet())
+
+    println()
+
+    val aboutMap = AboutMap()
+
+    aboutMap.accountsReport()                   //Reads the account points balance, before updates.
+    aboutMap.updatePointsCredit(1)     //Updates an existing account two times.
+    aboutMap.updatePointsCredit(1)
+    aboutMap.updatePointsCredit(5)     //Tries to update a non-existing account: prints an error message.
+    aboutMap.accountsReport()                   //Reads the account points balance, after updates.
+
+    println()
 }
