@@ -123,4 +123,12 @@ fun main() {
     println("Map element access")
     val mapElementAccess = MapElementAccess()
     mapElementAccess.printSome()
+
+    println("Zip function")
+    val zipFunction = ZipFunction()
+    zipFunction.printSome()
+
+    println("Get or else function")
+    val getOrElseFunction = GetOrElseFunction()
+    getOrElseFunction.printSome()
 }

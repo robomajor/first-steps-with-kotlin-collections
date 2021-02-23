@@ -21,5 +21,6 @@ class MapElementAccess {
         println("value2 is $value2")
         println("value3 is $value3")
         println("value4 is $value4")
+        println()
     }
 }
