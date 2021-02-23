@@ -54,4 +54,73 @@ fun main() {
 
     val firstOrNullAndLastOrNull = FirstOrNullAndLastOrNull()
     firstOrNullAndLastOrNull.printSome()
+
+    val countFunction = CountFunction()
+    countFunction.printSome()
+
+    //associateBy and groupBy below
+
+    val people = listOf(                                                     //Defines a collection of people.
+        Person("John", "Boston", "+1-888-123456"),
+        Person("Sarah", "Munich", "+49-777-789123"),
+        Person("Svyatoslav", "Saint-Petersburg", "+7-999-456789"),
+        Person("Vasilisa", "Saint-Petersburg", "+7-999-123456"))
+
+    //Builds a map from phone numbers to their owners' information. it.phone is the keySelector here.
+    // The valueSelector is not provided, so the values of the map are Person objects themselves.
+    val phoneBook = people.associateBy { it.phone }
+
+    //Builds a map from phone numbers to the cities where owners live. Person::city is the valueSelector here,
+    // so the values of the map contain only cities.
+    val cityBook = people.associateBy(Person::phone, Person::city)
+
+    //Builds a map that contains cities and people living there. The values of the map are lists of person names.
+    val peopleCities = people.groupBy(Person::city, Person::name)
+
+    println("People: $people")
+    println("Phone book: $phoneBook")
+    println("City book: $cityBook")
+    println("People living in each city: $peopleCities")
+
+    println("partition function")
+
+    val numbers = listOf(1, -2, 3, -4, 5, -6)
+
+    val evenOdd = numbers.partition { it % 2 == 0 }           //Splits numbers into a Pair of lists with even and odd numbers.
+
+    //Splits numbers into two lists with positive and negative numbers.
+    // Pair destructuring is applied here to get the Pair members.
+    val (positives, negatives) = numbers.partition { it > 0 }
+
+    println("Numbers: $numbers")
+    println("Even numbers: ${evenOdd.first}")
+    println("Odd numbers: ${evenOdd.second}")
+    println("Positive numbers: $positives")
+    println("Negative numbers: $negatives")
+
+    println("flatMap function")
+
+    val tripled = numbers.flatMap { listOf(it, it, it) } // 2
+    val normalAndSquare = numbers.flatMap { listOf(it, it*it) } // 2
+
+    println("Numbers: $numbers")
+    println("Transformed: $tripled")
+    println("Transformed diferent: $normalAndSquare")
+
+    println("minOrNull, maxOrNull")
+
+    val threeNumbers = listOf(1, 2, 3)
+    val empty = emptyList<Int>()
+
+    println("Numbers: $numbers, min = ${threeNumbers.minOrNull()} max = ${threeNumbers.maxOrNull()}")
+    println("Empty: $empty, min = ${empty.minOrNull()}, max = ${empty.maxOrNull()}")
+
+    println()
+    println("sorted function")
+    val sortedFunction = SortedFunction()
+    sortedFunction.printSome()
+
+    println("Map element access")
+    val mapElementAccess = MapElementAccess()
+    mapElementAccess.printSome()
 }
